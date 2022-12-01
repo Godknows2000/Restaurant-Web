@@ -1,0 +1,29 @@
+﻿@page
+@model DetailsModel
+
+<div class="container ">
+    <div class="row mt-2">
+        <div class="col-md-6"><h2 class="text-primary">Detail.. </h2></div>
+        <div class="col-md-6 text-end"><a asp-page="Edit" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i> Edit..</a></div>
+    </div>
+    <div class="card col-md-5 box-shadow">
+        <div class="card-header bg-secondary"></div>
+        <div class="card-body">
+            <div>
+                <div class="col">
+                    <label class="form-label text-secondary">Name</label>
+                    <div>@Model.Category.Name</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="mt-2">
+                    <label class="form-label text-secondary">Display Order</label>
+                    <div>@Model.Category.DisplayOrder</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
+
+
