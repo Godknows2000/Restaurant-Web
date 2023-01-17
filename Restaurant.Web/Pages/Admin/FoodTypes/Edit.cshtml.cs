@@ -24,7 +24,7 @@ namespace Restaurant.Web.Pages.Admin.FoodTypes
             {
                 _db.Update(FoodType);
                 await _db.SaveChangesAsync();
-                TempData["Success"] = "Food type updated successfully ";
+                TempData["success"] = "Food type updated successfully ";
                 return RedirectToPage("Index");
             }
             return Page();

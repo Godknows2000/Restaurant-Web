@@ -25,7 +25,7 @@ namespace Restaurant.Web.Pages.Admin.FoodTypes
                 {
                     _db.FoodTypes.Remove(foodFromDb);
                     await _db.SaveChangesAsync();
-                    TempData["Success"] = "Food type deleted successfully ";
+                    TempData["success"] = "Food type deleted successfully ";
                     return RedirectToPage("Index");
                 }
                 

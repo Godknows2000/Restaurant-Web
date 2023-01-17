@@ -25,7 +25,7 @@ namespace Restaurant.Web.Pages.Admin.Categories
                 {
                     _db.Categories.Remove(categoryFromDb);
                     await _db.SaveChangesAsync();
-                    TempData["Success"] = "Category successfully deleted";
+                    TempData["success"] = "Category successfully deleted";
                     return RedirectToPage("Index");
                 }
                 

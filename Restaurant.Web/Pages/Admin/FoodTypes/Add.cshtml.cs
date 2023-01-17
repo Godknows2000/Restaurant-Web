@@ -25,7 +25,7 @@ namespace Restaurant.Web.Pages.Admin.FoodTypes
             {
                 await _db.FoodTypes.AddAsync(FoodType);
                 await _db.SaveChangesAsync();
-                TempData["Success"] = "Food type created successfully ";
+                TempData["success"] = "Food type created successfully ";
                 return RedirectToPage("Index");
             }
             return Page();

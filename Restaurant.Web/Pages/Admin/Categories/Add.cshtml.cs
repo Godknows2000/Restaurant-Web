@@ -29,8 +29,8 @@ namespace Restaurant.Web.Pages.Admin.Categories
             if (ModelState.IsValid)
             {
                 _dbCategory.Add(Category);
-                _dbCategory.Save();
-                TempData["Success"] = "Category successfully created";
+                _dbCategory.Save(Category);
+                TempData["success"] = "Category successfully created";
                 return RedirectToPage("Index");
             }
             return Page();

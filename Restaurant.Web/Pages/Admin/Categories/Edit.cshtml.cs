@@ -28,7 +28,7 @@ namespace Restaurant.Web.Pages.Admin.Categories
             {
                 _db.Update(Category);
                 await _db.SaveChangesAsync();
-                TempData["Success"] = "Category successfully updated";
+                TempData["success"] = "Category successfully updated";
                 return RedirectToPage("Index");
             }
             return Page();
