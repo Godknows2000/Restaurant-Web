@@ -20,7 +20,9 @@ namespace Restaurant.Models
         public double Price { get; set; }
         public int FoodTypeId { get; set; }
         [ForeignKey("FoodTypeId")]
+        [Display(Name ="Food Type")]
         public FoodType FoodType { get; set; }
+        [Display(Name ="Category")]
         public int CategoryId { get; set; }
         [ForeignKey("CategoryId")]
         public Category Category { get; set; }

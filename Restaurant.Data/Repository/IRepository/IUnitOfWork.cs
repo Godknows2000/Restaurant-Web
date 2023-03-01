@@ -11,6 +11,10 @@ namespace Restaurant.Data.Repository.IRepository
         ICategoryRepository Category { get; }
         IFoodTypeRepository FoodType { get; }
         IMenuItemRepository MenuItem { get; }
+        IShoppingCartRepository ShoppingCart { get; }
+        IOrderDetailsRepository OrderDetails { get; }
+        IOrderHeaderRepository OrderHeader { get; }
+        IUserRepository User { get; }
         void Save();
     }
 }

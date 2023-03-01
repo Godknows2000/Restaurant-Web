@@ -1,0 +1,67 @@
+﻿@page
+@model IndexModel
+
+@*home content*@
+<section class="home">
+    <div class="content">
+        <h1>
+            Fast Food
+            <br /><span>Restaurant</span>
+        </h1>
+        <p>We are the best restaurant in town, try us today for the best food in market. </p>
+        <div id="btn"><button class="btn btn-secondary">Order now</button> <span>$5.50</span></div>
+    </div>
+    <div class="img">
+        <img src="/images/burger.png" />
+    </div>
+</section>
+<div class="row pb-3 backgroundWhite">
+    @foreach(var category in Model.CategoryList){
+        <div class="card col-md-12">
+            <div class="card-header bg-light">
+                <h3 class="pl-1" style="color: #0077cc;">@category.Name</h3>
+            </div>
+            <div class="card-body">
+                <div class="col-12">
+                    <div class="row my-3">
+                        @foreach (var menuItem in Model.MenuItemList.Where(u => u.CategoryId == category.Id))
+                        {
+                            <div class="col-lg-4 col-md-6 pb-4 filter">
+                                <div class="card">
+                                    <div class="card-header bg-secondary">
+                                        <div class="card-body pb-1 row">
+
+                                            <div class="col-8 h5 text-white">@menuItem.Name</div>
+                                            <div class="col-4 h4 text-end"><span class="text-warning" style="color: #0077cc;">$@menuItem.Price</span></div>
+
+                                        </div>
+                                    </div>
+                                    <div class="card-body p-1 px-3 row">
+
+                                        <img src="@menuItem.Image" class="card-img-top" alt="...">
+                                        <div class="col-6 pt-2">
+                                            <span class="badge p-2 border w-100 text-white bg-success pt-2">@menuItem.Category.Name</span>
+                                        </div>
+                                        <div class="col-6 pt-2">
+                                            <span class="badge p-2 border w-100 text-white bg-warning pt-2">@menuItem.FoodType.Name</span>
+                                        </div>
+                                        <div class="col-12 pt-2" style="font-size:13px; text-align:justify;">
+                                            <p>@Html.Raw(@menuItem.Description)</p>
+                                        </div>
+
+                                    </div>
+                                    <div class="card-footer">
+                                        <a asp-page="Details" asp-route-id="@menuItem.Id" class="btn btn-dark form-control btn-sm p-2" style=" height:40px">View details</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+         </div>
+    
+
+    }
+</div>

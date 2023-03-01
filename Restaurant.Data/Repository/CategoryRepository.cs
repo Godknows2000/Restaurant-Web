@@ -9,25 +9,13 @@ using System.Threading.Tasks;
 
 namespace Restaurant.Data.Repository
 {
-    public class CategoryRepository : Repository<Category>, ICategoryRepository
+    public class UserRepository : Repository<User>, IUserRepository
     {
         private readonly RestaurantDbContext _db;
 
-        public CategoryRepository(RestaurantDbContext db) : base(db)
+        public UserRepository(RestaurantDbContext db) : base(db)
         {
             _db = db;
-        }
-
-        public void Save(Category category)
-        {
-            _db.SaveChanges();
-        }
-
-        public void Update(Category category)
-        {
-            var objFromDb = _db.Categories.FirstOrDefault(c => c.Id == category.Id);
-            objFromDb.Name = category.Name;
-            objFromDb.DisplayOrder = category.DisplayOrder;
         }
     }
 }

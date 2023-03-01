@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace Restaurant.Data.Repository.IRepository
 {
-    public interface ICategoryRepository : IRepository<Category>
+    public interface IUserRepository : IRepository<User>
     {
-        void Save(Category category);
-        void Update(Category category);
+
     }
 }

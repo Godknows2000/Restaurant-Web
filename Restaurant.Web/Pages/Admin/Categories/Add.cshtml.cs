@@ -8,13 +8,13 @@ namespace Restaurant.Web.Pages.Admin.Categories
 {
     public class AddModel : PageModel
     {
-        private readonly ICategoryRepository _dbCategory;
+        private readonly IUnitOfWork _unitOfWork;
         
         [BindProperty]
         public Category Category { get; set; }
-        public AddModel(ICategoryRepository dbCategory)
+        public AddModel(IUnitOfWork unitOfWork)
         {
-            _dbCategory = dbCategory;
+            _unitOfWork = unitOfWork;
         }
         public void OnGet()
         {
@@ -28,8 +28,8 @@ namespace Restaurant.Web.Pages.Admin.Categories
             }
             if (ModelState.IsValid)
             {
-                _dbCategory.Add(Category);
-                _dbCategory.Save(Category);
+                _unitOfWork.Category.Add(Category);
+                _unitOfWork.Save();
                 TempData["success"] = "Category successfully created";
                 return RedirectToPage("Index");
             }

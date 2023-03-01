@@ -17,6 +17,7 @@ namespace Restaurant.Data.Repository
         public Repository(RestaurantDbContext db)
         {
             _db = db;
+            //_db.MenuItems.OrderBy(u => u.Name);
             this.dbSet = db.Set<T>();
         }
 
@@ -25,19 +26,39 @@ namespace Restaurant.Data.Repository
             dbSet.Add(entity);
         }
 
-        public IEnumerable<T> GetAll()
+        public IEnumerable<T> GetAll(Expression<Func<T, bool>>? filter = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>>? orderby = null,
+            string ? includeProperties = null)
         {
             IQueryable<T> query = dbSet;
-            return query.AsQueryable();
+            if(includeProperties != null)
+            {
+                foreach(var includeProperty in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(includeProperty);
+                }
+            }
+            if(orderby != null)
+            {
+                return orderby(query).ToList();
+            }
+            return query.ToList();
         }
 
-        public T GetFirstOrDefault(Expression<Func<T, bool>>? filter = null)
+        public T GetFirstOrDefault(Expression<Func<T, bool>>? filter = null, string? includeProperties = null)
         {
             IQueryable<T> query = dbSet;
-            if(filter != null)
+            if (filter != null)
             {
                 query = query.Where(filter);
 
+            }
+            if (includeProperties != null)
+            {
+                foreach (var includeProperty in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(includeProperty);
+                }
             }
             return query.FirstOrDefault();
         }
